@@ -1,109 +1,47 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新竹市村里及熱圖</title>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Hsinchu Project</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f4f4f4;
+            color: #333;
         }
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
             text-align: center;
         }
         main {
-            padding: 20px;
+            padding: 2rem;
+        }
+        footer {
             text-align: center;
-        }
-        #heatmap-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        svg {
-            border: 1px solid #ccc;
-        }
-        .tooltip {
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 5px;
-            font-size: 12px;
-            pointer-events: none;
-            opacity: 0;
+            background-color: #222;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>新竹市村里及熱圖</h1>
+        <h1>Welcome to Hsinchu Project</h1>
     </header>
     <main>
-        <p>動畫式的新竹市村里級熱圖，新竹市主要分為北區，東區及香山區，透過點擊縣市中的鄉鎮再顯示村里細節。
-
-資料以村里為主。</p>
-        <div id="heatmap-container"></div>
-        <div class="tooltip" id="tooltip"></div>
+        <p>This is a sample HTML page for your Hsinchu project.</p>
+        <p>Edit this content to showcase your project's details.</p>
     </main>
-    <script>
-        // Sample data for the heatmap
-        const data = [
-            { x: 1, y: 1, value: 10 },
-            { x: 1, y: 2, value: 20 },
-            { x: 2, y: 1, value: 30 },
-            { x: 2, y: 2, value: 40 },
-            { x: 3, y: 1, value: 50 },
-            { x: 3, y: 2, value: 60 }
-        ];
-
-        // Heatmap dimensions
-        const margin = { top: 20, right: 20, bottom: 20, left: 20 };
-        const width = 400 - margin.left - margin.right;
-        const height = 300 - margin.top - margin.bottom;
-        const gridSize = 50;
-
-        // Create SVG container
-        const svg = d3.select("#heatmap-container")
-            .append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", `translate(${margin.left},${margin.top})`);
-
-        // Create tooltip
-        const tooltip = d3.select("#tooltip");
-
-        // Create color scale
-        const colorScale = d3.scaleSequential(d3.interpolateBlues)
-            .domain([0, d3.max(data, d => d.value)]);
-
-        // Draw heatmap cells
-        svg.selectAll(".cell")
-            .data(data)
-            .enter().append("rect")
-            .attr("class", "cell")
-            .attr("x", d => (d.x - 1) * gridSize)
-            .attr("y", d => (d.y - 1) * gridSize)
-            .attr("width", gridSize)
-            .attr("height", gridSize)
-            .style("fill", d => colorScale(d.value))
-            .on("mouseover", function (event, d) {
-                tooltip.style("opacity", 1)
-                    .style("left", (event.pageX + 10) + "px")
-                    .style("top", (event.pageY - 10) + "px")
-                    .html(`Value: ${d.value}`);
-            })
-            .on("mouseout", function () {
-                tooltip.style("opacity", 0);
-            });
-    </script>
+    <footer>
+        <p>&copy; 2025 Hsinchu Project</p>
+    </footer>
 </body>
 </html>
